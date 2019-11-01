@@ -1,8 +1,8 @@
 from time import time,sleep
 class Hangman:
-    def __init__(self, name, user_input):
+    def __init__(self, name, cart):
         self.name = name
-        self.user_input = user_input
+        self.cart = cart
 
     def get_userinfo(self):
         self.name = input("What is your name? ")
@@ -12,17 +12,17 @@ class Hangman:
         sleep(0.5)
 
     def get_userinput(self):
-        self.user_input = "hangman"  #set the secret user_input
-        guesses = '' #empty variable to store letters   remember to create a list
+        self.cart = "hangman"  #set the secret user_input
+        guesses = '' #empty string to store string as they can be indiced & sliced and can work as a list also
 
         number_of_turns = 10
         while number_of_turns > 0:         
             failed_counter = 0 #loop to check the value                 
-            for i in self.user_input:      
+            for i in self.cart:      
                 if i in guesses:    
                     print(i, end=" ")    
                 else:
-                    print("*", end=" "),     
+                    print("*", end=""),     
                     failed_counter += 1 
             if failed_counter == 0:        
                 print ("You won") 
@@ -32,7 +32,7 @@ class Hangman:
 
             guesses += guess # set the players guess to guesses
                             
-            if guess not in self.user_input:  
+            if guess not in self.cart:  
                 number_of_turns -= 1        
                 print ("Wrong")    
                 print("You have", + number_of_turns, 'more guesses')
